@@ -6,18 +6,22 @@ import java.util.Iterator;
  *
  * @author Grupo_10
  */
-public class CircularLinkedList <E> implements List<E>, Iterable<E>{
+public class CircularDoubleLinkedList <E> implements List<E>, Iterable<E>{
     
-    private CircularNodeList<E> last;
+    private CircularDoubleNodeList<E> last;
     private int effectiveSize = 0;
     
     @Override
     public Iterator<E> iterator(){
         Iterator<E> it = new Iterator<E>(){
-            private CircularNodeList<E> node = last;
+            private CircularDoubleNodeList<E> node = last;
             
             @Override
             public boolean hasNext() {
+                return node!=null;
+            }
+            
+            public boolean hasPrev(){
                 return node!=null;
             }
 
@@ -27,19 +31,25 @@ public class CircularLinkedList <E> implements List<E>, Iterable<E>{
                 node = node.getNext();
                 return tmp;
             }
+            
+            public E prev(){
+                E tmp = node.getContent();
+                node = node.getPrev();
+                return tmp;
+            }
         };
         
         return it;
     }
     
-    public CircularLinkedList(){
+    public CircularDoubleLinkedList(){
         last=null;
     }
     
 
     @Override
     public boolean addLast(E e) {
-        CircularNodeList<E> nodo = new CircularNodeList<>(e);
+        CircularDoubleNodeList<E> nodo = new CircularDoubleNodeList<>(e);
         if(e == null){
             return false;
         }
@@ -48,7 +58,9 @@ public class CircularLinkedList <E> implements List<E>, Iterable<E>{
         }
         else{
             nodo.setNext(this.last.getNext());
+            this.last.getNext().setPrev(nodo);
             this.last.setNext(nodo);
+            nodo.setPrev(this.last); 
         }
         this.last= nodo;
         effectiveSize++;
@@ -61,7 +73,7 @@ public class CircularLinkedList <E> implements List<E>, Iterable<E>{
             return null;
         }
         
-        CircularNodeList<E> node = last;
+        CircularDoubleNodeList<E> node = last;
         
         for (int i=0; i<index; i++){
             node = node.getNext();
@@ -86,11 +98,11 @@ public class CircularLinkedList <E> implements List<E>, Iterable<E>{
         if(isEmpty()) 
             return "[]";
         sb.append("[");
-        CircularNodeList<E> node = this.last;
+        CircularDoubleNodeList<E> node = this.last;
         while(node.getNext() != this.last){
-            sb.append(node.getContent());
-            sb.append(", ");
             node=node.getNext();
+            sb.append(node.getContent());
+            sb.append(", "); 
         }
         sb.append(this.last.getContent());
         sb.append("]");
