@@ -1,4 +1,4 @@
-package main;
+package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
