@@ -30,4 +30,8 @@ public class Persona {
     public String toString(){
         return "Persona "+vivo;
     }
+
+    int getId() {
+        return id;
+    }
 }
