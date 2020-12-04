@@ -20,11 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-<<<<<<< Updated upstream
 import main.Simulador;
-=======
 import main.Persona;
->>>>>>> Stashed changes
+
 
 /**
  * FXML Controller class
