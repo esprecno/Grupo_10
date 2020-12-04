@@ -5,9 +5,16 @@
  */
 package Controladores;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -21,7 +28,24 @@ public class Controller2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
+    
+    public void closeWindows(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/FXMLMainController"));
+            Parent root = loader.load();
+            FXMLMainController controlador = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            
+            stage.setScene(scene);
+            stage.show();
+          
+        } catch (IOException ex) {
+            Logger.getLogger(Controller2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
