@@ -1,5 +1,6 @@
 package main;
 
+import Controladores.FXMLMainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/vistas/FXMLMain.fxml"));        
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getResourceAsStream("/vistas/FXMLMain.fxml"));
+        final FXMLMainController controller = loader.getController();
+        controller.setStage(stage);
         Scene scene = new Scene(root);        
         stage.setScene(scene);
         stage.show();

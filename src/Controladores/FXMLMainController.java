@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.Simulador;
 import util.CircularDoubleLinkedList;
@@ -24,16 +25,9 @@ import util.CircularDoubleLinkedList;
 public class FXMLMainController implements Initializable {
     private Stage stage;
     @FXML
-    private Label label;
+    private Button Iniciar;
     @FXML
-    private Button button;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        
-        Simulador simular = new Simulador();
-        simular.start(new Stage());        
-    }
+    private TextField txtNum;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,6 +36,13 @@ public class FXMLMainController implements Initializable {
     
     public void setStage(Stage stage){
         this.stage=stage;
+    }
+
+    @FXML
+    private void btnIniciar(ActionEvent event) {    
+        this.stage.close();
+        Simulador simular = new Simulador();
+        simular.start(new Stage()); 
     }
     
 }

@@ -27,17 +27,13 @@ public class Simulador extends Application {
        
     public void start(Stage stage){
     try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/Controller2"));
-            Parent root = loader.load();
-            Controller2 controlador = loader.getController();
-            controlador.setStage(stage);
-
-            Scene scene = new Scene(root);          
-            
-            stage.setScene(scene);
-           
-            stage.show();           
-           stage.setOnCloseRequest(e-> controlador.closeWindows()); 
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getResourceAsStream("/vistas/vista2.fxml"));
+        final Controller2 controller = loader.getController();
+        controller.setStage(stage);
+        Scene scene = new Scene(root);        
+        stage.setScene(scene);
+        stage.show();
             
         } catch (IOException ex) {
             Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, ex);
