@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.Simulador;
 
 /**
  * FXML Controller class
@@ -39,20 +40,9 @@ public class Controller2 implements Initializable {
     
     
     public void closeWindows(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/FXMLMainController"));
-            Parent root = loader.load();
-            FXMLMainController controlador = loader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            
-            stage.setScene(scene);
-            stage.show();
-          
-        } catch (IOException ex) {
-            Logger.getLogger(Controller2.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.stage.close();
+        Simulador simular = new Simulador();
+        simular.start(new Stage());
     }
     
     public void setStage(Stage stage){
