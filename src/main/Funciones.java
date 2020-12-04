@@ -5,8 +5,15 @@
  */
 package main;
 
-import java.util.Iterator;
+import java.io.File;
+import java.io.IOException;
 import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import util.CircularDoubleLinkedList;
 
 /**
@@ -34,6 +41,14 @@ public class Funciones {
             while(!pVictima.equals(pAsesino)){
                 if(pVictima.getVivo()){
                     pVictima.setVivo(false);
+                    Clip sonido =reproducirSonido();
+                    sonido.start();
+                    try{
+                        Thread.sleep(3000);
+                    }catch (InterruptedException ex) {
+                        Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                    sonido.close();
                     pAsesino = buscarAsesinoDer(it);
                     pVictima = buscarVictimaDer(it);
                 }
@@ -70,6 +85,14 @@ public class Funciones {
         while(!pVictima.equals(pAsesino)){
             if(pVictima.getVivo()){
                 pVictima.setVivo(false);
+                Clip sonido =reproducirSonido();
+                    sonido.start();
+                    try{
+                        Thread.sleep(3000);
+                    }catch (InterruptedException ex) {
+                        Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                    sonido.close();
                 pAsesino = buscarAsesinoIzq(it);
                 pVictima = buscarVictimaIzq(it);
             }
@@ -97,5 +120,20 @@ public class Funciones {
             p=it.previous();
         }
         return p;
+    }
+    
+    private static Clip reproducirSonido(){
+        Clip sonido = null;
+        try{
+            sonido = AudioSystem.getClip();
+            sonido.open(AudioSystem.getAudioInputStream(new File("src/resources/Corte.wav")));
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex){
+            Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedAudioFileException ex){
+            Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sonido;
     }
 }
