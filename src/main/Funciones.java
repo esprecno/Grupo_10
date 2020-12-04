@@ -30,8 +30,7 @@ public class Funciones {
         }
         ListIterator<Persona> it = list.listIterator(inicio);
         if(der) simularDer(it, inicio);
-        else simularIzq(it, inicio);
-        System.out.println(list);
+        else simularIzq(it, inicio);        
     }
     
     public static void simularDer(ListIterator<Persona> it, int inicio){
@@ -42,6 +41,7 @@ public class Funciones {
                 if(pVictima.getVivo()){
                     pVictima.setVivo(false);
                     Clip sonido =reproducirSonido();
+                    
                     sonido.start();
                     try{
                         Thread.sleep(3000);

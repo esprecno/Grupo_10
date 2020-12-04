@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -23,7 +24,20 @@ import javafx.stage.Stage;
  */
 public class Simulador extends Application {
     
-    
+    public boolean verificarEntrada(String entrada){
+        if(entrada.isEmpty()){
+            return false;
+        }if(isNumeric(entrada)){
+            int ingreso=Integer.parseInt(entrada);
+            if(ingreso>0){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
        
     public void start(Stage stage){
     try {
@@ -39,4 +53,18 @@ public class Simulador extends Application {
             Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
+    
+    public static boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    }
 }

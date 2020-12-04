@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -28,6 +29,10 @@ public class FXMLMainController implements Initializable {
     private Button Iniciar;
     @FXML
     private TextField txtNum;
+    @FXML
+    private Label mensaje;
+    @FXML
+    private ChoiceBox direccion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,9 +45,18 @@ public class FXMLMainController implements Initializable {
 
     @FXML
     private void btnIniciar(ActionEvent event) {    
-        this.stage.close();
+        
         Simulador simular = new Simulador();
-        simular.start(new Stage()); 
+        if(simular.verificarEntrada(txtNum.getText())){
+           this.stage.close();
+           simular.start(new Stage()); 
+        }else{
+            mensaje.setText("Numero inválido");
+        }
+         
     }
+    
+   
+    
     
 }

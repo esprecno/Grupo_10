@@ -5,6 +5,9 @@
  */
 package main;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author USUARIO
@@ -12,8 +15,12 @@ package main;
 public class Persona {
     private boolean vivo;
     private int id;
+    private ImageView imagen;
+    
+    
     
     public Persona(int id){
+        this.imagen.setImage(new Image("resources\\soldado_normal.png"));
         this.id=id;
         this.vivo=true;
     }
@@ -33,5 +40,13 @@ public class Persona {
 
     int getId() {
         return id;
+    }
+    
+    ImageView getImagen(){
+        return imagen;
+    }
+    
+    public void setImagen(ImageView imagen){
+        this.imagen=imagen;
     }
 }

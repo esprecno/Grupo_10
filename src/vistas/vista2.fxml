@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.collections.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.Controller2">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.Controller2">
    <children>
-      <Label layoutX="43.0" layoutY="341.0" text="Escoje tu posición" />
-      <TextField fx:id="txtPos" layoutX="204.0" layoutY="335.0" prefHeight="27.0" prefWidth="114.0" />
+      <Label layoutX="76.0" layoutY="302.0" text="Escoje tu posición" />
+      <TextField fx:id="txtPos" layoutX="74.0" layoutY="335.0" prefHeight="27.0" prefWidth="143.0" />
+      <ChoiceBox id="direccion" fx:id="direccion" layoutX="370.0" layoutY="335.0" prefWidth="150.0">
+      <items>
+          <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Derecha" />
+                 <String fx:value="Izquierda" /> 
+          </FXCollections>
+      </items>
+      </ChoiceBox>
+      <Label layoutX="372.0" layoutY="302.0" text="Escoje la dirección" />
+      <Circle fill="#d9dadb09" layoutX="291.0" layoutY="162.0" radius="100.0" stroke="#cfcccc" strokeType="INSIDE" />
    </children>
 </AnchorPane>
