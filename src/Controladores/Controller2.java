@@ -22,14 +22,17 @@ import javafx.stage.Stage;
  * @author darin
  */
 public class Controller2 implements Initializable {
-
+    
+    private Stage stage;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-    }    
+    }  
+    
     
     public void closeWindows(){
         try {
@@ -46,6 +49,10 @@ public class Controller2 implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(Controller2.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void setStage(Stage stage){
+        this.stage=stage;
     }
     
 }

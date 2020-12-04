@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import main.Simulador;
 import util.CircularDoubleLinkedList;
 
 /**
@@ -21,7 +22,7 @@ import util.CircularDoubleLinkedList;
  * @author Grupo_10
  */
 public class FXMLMainController implements Initializable {
-    
+    private Stage stage;
     @FXML
     private Label label;
     @FXML
@@ -30,32 +31,17 @@ public class FXMLMainController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/Controller2"));
-            Parent root = loader.load();
-            Controller2 controlador = loader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            
-            stage.setScene(scene);
-            stage.show();
-            
-            stage.setOnCloseRequest(e-> controlador.closeWindows());
-            Stage myStage = (Stage) this.button.getScene().getWindow();
-            myStage.close();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        Simulador simular = new Simulador();
+        simular.start(new Stage());        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    public void setStage(Stage stage){
+        this.stage=stage;
+    }
     
 }
