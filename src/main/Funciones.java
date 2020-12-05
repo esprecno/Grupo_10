@@ -10,8 +10,11 @@ import java.io.IOException;
 import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.print.PrintColor.COLOR;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -42,10 +45,10 @@ public class Funciones {
                 if(pVictima.getVivo()){
                     pVictima.setVivo(false);
                     Clip sonido =reproducirSonido();
-                    cambiarImagen(pAsesino,"resources/soldado_dispara.png");
-                    //pAsesino.setImagen(new Image("resources/soldado_dispara.png"));
-                    //pVictima.setImagen(new Image("resources/calabera.png"));
-                    cambiarImagen(pVictima,"resources/calabera.png");
+
+                    pAsesino.setImagen(new Image("resources/soldado_dispara.png"));
+                    pVictima.setImagen(new Image("resources/calabera.png"));
+
                     
                     sonido.start();
                     try{
@@ -53,6 +56,7 @@ public class Funciones {
                     }catch (InterruptedException ex) {
                         Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    System.out.println("Asesino: "+pAsesino.getId()+" Victima: "+pVictima.getId());
                     sonido.close();
                     pAsesino.setImagen(new Image("resources/soldad_serio2.png"));
                     pAsesino = buscarAsesinoDer(it);
@@ -62,12 +66,8 @@ public class Funciones {
                     pVictima = it.next();
                 }
             }
+            System.out.println("Sobreviviente: "+pAsesino.getId());
             
-            
-    }
-    
-    private static void cambiarImagen(Persona p, String s){
-        p.setImagen(new Image(s));
     }
     
     private static Persona buscarAsesinoDer(ListIterator<Persona> it){
@@ -97,11 +97,6 @@ public class Funciones {
                 pVictima.setVivo(false);
                 Clip sonido =reproducirSonido();
                 pAsesino.setImagen(new Image("resources/soldado_dispara.png"));
-                    try{
-                        Thread.sleep(1000);
-                    }catch (InterruptedException ex) {
-                        Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
-                    } 
                 pVictima.setImagen(new Image("resources/calabera.png"));
                 
                 sonido.start();
@@ -166,7 +161,12 @@ public class Funciones {
             double posX = radio * Math.cos(Math.toRadians(anguloAct));
             double posY = radio * Math.sin(Math.toRadians(anguloAct));
             Persona p = new Persona(i,posX+270,posY+280);
+            Label num = new Label(""+p.getId());
+            
+            num.setLayoutX(posX+270);
+            num.setLayoutY(posY+280);
             root.getChildren().add(p.getImagen());
+            root.getChildren().add(num);
             list.addLast(p);
             anguloAct+=dist;
         }
