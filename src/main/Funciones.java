@@ -107,6 +107,7 @@ public class Funciones {
                     } 
                     sonido.close();
                 pAsesino.setImagen(new Image("resources/soldad_serio2.png"));
+                System.out.println("Asesino: "+pAsesino.getId()+" Victima: "+pVictima.getId());
                 pAsesino = buscarAsesinoIzq(it);
                 pVictima = buscarVictimaIzq(it);
             }
@@ -114,7 +115,7 @@ public class Funciones {
                 pVictima = it.previous();
             }
         }
-        System.out.println(pAsesino.getId());
+        System.out.println("Sobreviviente: "+pAsesino.getId());
     }
     
     private static Persona buscarAsesinoIzq(ListIterator<Persona> it){
