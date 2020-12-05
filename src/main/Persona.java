@@ -15,14 +15,16 @@ import javafx.scene.image.ImageView;
 public class Persona {
     private boolean vivo;
     private int id;
-    private ImageView imagen;
+    private ImageView imagen=new ImageView();
     
     
     
-    public Persona(int id){
-        this.imagen.setImage(new Image("resources\\soldado_normal.png"));
+    public Persona(int id,double x, double y){
+        this.imagen.setImage(new Image("sold.png"));
         this.id=id;
         this.vivo=true;
+        this.imagen.setX(x);
+        this.imagen.setY(y);
     }
     
     public boolean getVivo(){
@@ -42,11 +44,12 @@ public class Persona {
         return id;
     }
     
-    ImageView getImagen(){
+    public ImageView getImagen(){
         return imagen;
     }
     
-    public void setImagen(ImageView imagen){
-        this.imagen=imagen;
+    public void setImagen(Image imagen){
+        this.imagen.setImage(imagen);
     }
+
 }

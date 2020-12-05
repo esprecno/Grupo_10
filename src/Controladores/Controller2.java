@@ -18,8 +18,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+<<<<<<< Updated upstream
+=======
+import main.Funciones;
+>>>>>>> Stashed changes
 import main.Simulador;
 import main.Persona;
 
@@ -37,7 +42,9 @@ public class Controller2 implements Initializable {
     @FXML
     private ChoiceBox direccion;
     @FXML
-    private Circle circulo;
+    private AnchorPane anchor;
+    @FXML
+    private Circle Circulo;
     
     
     /**
@@ -45,7 +52,7 @@ public class Controller2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        anchor = Funciones.crearLista(anchor, Circulo, FXMLMainController.num);
     }  
     
     
@@ -57,17 +64,7 @@ public class Controller2 implements Initializable {
     
     public void setStage(Stage stage){
         this.stage=stage;
-    }
-    
-     private void GeneradorImagenes(int numero_soldados){
-        
-         for(int i=0;i<numero_soldados;i++){
-             Persona persona=new Persona(i);
-             
-            
-        }
-    }
-     
+    }    
      
      
     private void DividirCirculo(){

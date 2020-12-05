@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -22,15 +24,12 @@ import util.CircularDoubleLinkedList;
  */
 public class Funciones {
     
-    public static void simular(int nPersonas, int inicio, boolean der){
-        CircularDoubleLinkedList<Persona> list = new CircularDoubleLinkedList<>();
-        for(int i=1; i<=nPersonas; i++){
-            Persona p = new Persona(i);
-            list.addLast(p);
-        }
+    public static void simular(CircularDoubleLinkedList<Persona> list, int inicio, boolean der){
+        
         ListIterator<Persona> it = list.listIterator(inicio);
         if(der) simularDer(it, inicio);
-        else simularIzq(it, inicio);        
+        else simularIzq(it, inicio);
+        
     }
     
     public static void simularDer(ListIterator<Persona> it, int inicio){
@@ -135,5 +134,22 @@ public class Funciones {
             Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
         }
         return sonido;
+    }
+    
+    public static AnchorPane crearLista(AnchorPane root, Circle c, int nPersonas){
+        CircularDoubleLinkedList<Persona> list = new CircularDoubleLinkedList<>();
+        double dist = 360/nPersonas;
+        double anguloAct=0;
+        double radio =c.getRadius();
+        
+        for(int i=1; i<=nPersonas; i++){
+            double posX = radio * Math.cos(Math.toRadians(anguloAct));
+            double posY = radio * Math.sin(Math.toRadians(anguloAct));
+            Persona p = new Persona(i,posX,posY);
+            root.getChildren().add(p.getImagen());
+            list.addLast(p);
+            anguloAct+=dist;
+        }
+        return root;
     }
 }
