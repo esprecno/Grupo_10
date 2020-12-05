@@ -33,7 +33,7 @@
             <Circle fx:id="Circulo" fill="WHITE" layoutX="290.0" layoutY="290.0" radius="290.0" stroke="WHITE" strokeType="INSIDE" styleClass="anchor" />
          </children></AnchorPane>
       <Button fx:id="Empezar" layoutX="690.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnEmpezar" text="Empezar" />
-      <Label fx:id="lblError" layoutX="640.0" layoutY="208.0" prefHeight="17.0" prefWidth="164.0" />
+      <Label fx:id="lblError" layoutX="640.0" layoutY="208.0" prefHeight="17.0" prefWidth="164.0" textFill="#f20000" />
       <Button fx:id="Nuevo" layoutX="667.0" layoutY="517.0" mnemonicParsing="false" onAction="#btnNuevo" text="Nuevo Intento" />
    </children>
 </AnchorPane>

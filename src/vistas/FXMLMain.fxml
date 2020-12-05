@@ -17,6 +17,6 @@
             <Font size="13.0" />
          </font></Label>
       <TextField fx:id="txtNum" layoutX="175.0" layoutY="55.0" prefHeight="19.0" prefWidth="103.0" />
-      <Label fx:id="mensaje" layoutX="20.0" layoutY="100.0" prefHeight="27.0" prefWidth="280.0" />
+      <Label fx:id="mensaje" layoutX="20.0" layoutY="100.0" prefHeight="27.0" prefWidth="280.0" textFill="#f50000" />
     </children>
 </AnchorPane>
