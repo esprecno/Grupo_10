@@ -18,15 +18,14 @@ public class Imagen extends Parent{
     
     private final ImageView Imagen;
     
-    private static final Image NORMAL= new Image("resources\\soldado_normal.png");//1
-    private static final Image MUERTO= new Image("resources\\soldado_muerto.png");//0
+    private static final Image NORMAL= new Image("resources\\soldad_serio2.png");//1
+    private static final Image MUERTO= new Image("resources\\calabera.png");//0
     private static final Image DISPARA= new Image("resources\\soldado_dispara.png");//2
     
     
     public Imagen(int id) {
         Imagen= new ImageView();
         actualizarImagen(id);
-        getChildren().add(Imagen);
     }
     
     public void actualizarImagen(int i){

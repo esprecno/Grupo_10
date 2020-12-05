@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import main.Funciones;
+import main.Main;
 import main.Simulador;
 import main.Persona;
 
@@ -49,6 +50,8 @@ public class Controller2 implements Initializable {
     private Button Empezar;
     @FXML
     private Label lblError;
+    @FXML
+    private Button Nuevo;
     
     
     /**
@@ -72,16 +75,29 @@ public class Controller2 implements Initializable {
 
     @FXML
     private void btnEmpezar(ActionEvent event) {
-        String dir =(String)direccion.getValue();
+        String dir="";
+            if(direccion.getValue()!=null)
+                dir = (String)direccion.getValue();
         boolean dirBool=dir.equals("Derecha");
         Simulador simular = new Simulador();
         int pos;
-        if(simular.verificarEntradaInit(txtPos.getText())){
+        if(simular.verificarEntradaInit(txtPos.getText()) && !(dir.equals(""))){
+            lblError.setText("");
             pos = Integer.parseInt(txtPos.getText());
+            txtPos.setText("");
+            Nuevo.setDisable(true);
             Funciones.simular(pos,dirBool);
+            Nuevo.setDisable(false);
         }else{
             lblError.setText("Número fuera de rango");
         }
+    }
+
+    @FXML
+    private void btnNuevo(ActionEvent event) {
+        this.stage.close();
+        Main m = new Main();
+        m.start(new Stage());
     }
     
     

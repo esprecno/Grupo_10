@@ -25,6 +25,7 @@ import util.CircularDoubleLinkedList;
  */
 public class Funciones {
     public static CircularDoubleLinkedList<Persona> list = new CircularDoubleLinkedList<>();
+    
     public static void simular(int inicio, boolean der){
         ListIterator<Persona> it = list.listIterator(inicio);
         if(der) simularDer(it, inicio);
@@ -40,15 +41,19 @@ public class Funciones {
                 if(pVictima.getVivo()){
                     pVictima.setVivo(false);
                     Clip sonido =reproducirSonido();
-                    pAsesino.setImagen(new Image(""));
-                    pVictima.setImagen(new Image(""));
+                    cambiarImagen(pAsesino,"resources/soldado_dispara.png");
+                    //pAsesino.setImagen(new Image("resources/soldado_dispara.png"));
+                    //pVictima.setImagen(new Image("resources/calabera.png"));
+                    cambiarImagen(pVictima,"resources/calabera.png");
+                    
                     sonido.start();
-                    try{
-                        Thread.sleep(3000);
+                     try{
+                        Thread.sleep(2000);
                     }catch (InterruptedException ex) {
                         Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
-                    } 
+                    }
                     sonido.close();
+                    pAsesino.setImagen(new Image("resources/soldad_sero2.png"));
                     pAsesino = buscarAsesinoDer(it);
                     pVictima = buscarVictimaDer(it);
                 }
@@ -56,8 +61,11 @@ public class Funciones {
                     pVictima = it.next();
                 }
             }
-            System.out.println(pAsesino.getId());
             
+    }
+    
+    private static void cambiarImagen(Persona p, String s){
+        p.setImagen(new Image(s));
     }
     
     private static Persona buscarAsesinoDer(ListIterator<Persona> it){
@@ -86,13 +94,22 @@ public class Funciones {
             if(pVictima.getVivo()){
                 pVictima.setVivo(false);
                 Clip sonido =reproducirSonido();
-                    sonido.start();
+                pAsesino.setImagen(new Image("resources/soldado_dispara.png"));
+                    try{
+                        Thread.sleep(1000);
+                    }catch (InterruptedException ex) {
+                        Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                pVictima.setImagen(new Image("resources/calabera.png"));
+                
+                sonido.start();
                     try{
                         Thread.sleep(3000);
                     }catch (InterruptedException ex) {
                         Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
                     } 
                     sonido.close();
+                pAsesino.setImagen(new Image("resources/soldad_serio2.png"));
                 pAsesino = buscarAsesinoIzq(it);
                 pVictima = buscarVictimaIzq(it);
             }

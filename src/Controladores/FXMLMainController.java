@@ -41,6 +41,7 @@ public class FXMLMainController implements Initializable {
         
         Simulador simular = new Simulador();
         if(simular.verificarEntradaSol(txtNum.getText())){
+            mensaje.setText("");
             num=Integer.parseInt(txtNum.getText());
            this.stage.close();
            simular.start(new Stage()); 
