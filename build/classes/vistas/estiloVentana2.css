@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 .fondo{
-    -fx-background-color:#FFCCCC;  
+    -fx-background-color:#D7CCC8;  
     
     
 }
@@ -19,3 +19,14 @@ and open the template in the editor.
     -fx-text-fill:#546E7A;
     
 }
+.anchor{
+    -fx-background-image: url("resources/fondo_guerra.jpg");
+    
+}
+#pane{ 
+    -fx-background-image: url("resources/fondo_guerra.jpg"); 
+    -fx-background-repeat: stretch; 
+    -fx-background-size: 900 506; 
+    -fx-background-position: center center; 
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+} 

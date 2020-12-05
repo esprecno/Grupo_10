@@ -9,13 +9,10 @@ and open the template in the editor.
 */
 
 .fondo{
-    -fx-background-color:#FFCCCC;  
-    
-    
+    -fx-background-color:#80CBC4;  
 }
 .boton{
     -fx-font-family:"Comic Sans MS bold";
-    -fx-font-size:20px;
-    -fx-text-fill:#546E7A;
+    -fx-font-size:12px;
     
 }
