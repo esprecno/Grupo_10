@@ -23,7 +23,8 @@ public class Main extends Application {
             Parent root = loader.load(getClass().getResourceAsStream("/vistas/FXMLMain.fxml"));
             final FXMLMainController controller = loader.getController();
             controller.setStage(stage);
-            Scene scene = new Scene(root);        
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("/vistas/estilo.css");
             stage.setScene(scene);
             stage.show();
         }

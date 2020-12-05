@@ -45,7 +45,8 @@ public class Simulador extends Application {
         Parent root = loader.load(getClass().getResourceAsStream("/vistas/vista2.fxml"));
         final Controller2 controller = loader.getController();
         controller.setStage(stage);
-        Scene scene = new Scene(root);        
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/vistas/estiloVentana2.css");        
         stage.setScene(scene);
         stage.show();
             
