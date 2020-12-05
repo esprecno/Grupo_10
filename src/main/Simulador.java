@@ -24,12 +24,12 @@ import javafx.stage.Stage;
  */
 public class Simulador extends Application {
     
-    public boolean verificarEntrada(String entrada){
+    public boolean verificarEntradaSol(String entrada){
         if(entrada.isEmpty()){
             return false;
         }if(isNumeric(entrada)){
             int ingreso=Integer.parseInt(entrada);
-            if(ingreso>0){
+            if(ingreso>7 && ingreso<41){
                 return true;
             }else{
                 return false;
@@ -66,5 +66,20 @@ public class Simulador extends Application {
         }
 
         return resultado;
+    }
+    
+    public boolean verificarEntradaInit(String entrada){
+        if(entrada.isEmpty()){
+            return false;
+        }if(isNumeric(entrada)){
+            int ingreso=Integer.parseInt(entrada);
+            if(ingreso>=0 && ingreso<FXMLMainController.num){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 }

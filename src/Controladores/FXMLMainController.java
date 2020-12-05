@@ -26,8 +26,6 @@ public class FXMLMainController implements Initializable {
     private TextField txtNum;
     @FXML
     private Label mensaje;
-    @FXML
-    private ChoiceBox direccion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,12 +40,12 @@ public class FXMLMainController implements Initializable {
     private void btnIniciar(ActionEvent event) {    
         
         Simulador simular = new Simulador();
-        if(simular.verificarEntrada(txtNum.getText())){
+        if(simular.verificarEntradaSol(txtNum.getText())){
             num=Integer.parseInt(txtNum.getText());
            this.stage.close();
            simular.start(new Stage()); 
         }else{
-            mensaje.setText("Numero inválido");
+            mensaje.setText("Numero inválido, valores entre 8 y 40 :)");
         }
          
     }

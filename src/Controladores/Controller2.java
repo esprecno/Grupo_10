@@ -10,21 +10,21 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-<<<<<<< Updated upstream
-=======
 import main.Funciones;
->>>>>>> Stashed changes
 import main.Simulador;
 import main.Persona;
 
@@ -45,6 +45,10 @@ public class Controller2 implements Initializable {
     private AnchorPane anchor;
     @FXML
     private Circle Circulo;
+    @FXML
+    private Button Empezar;
+    @FXML
+    private Label lblError;
     
     
     /**
@@ -64,11 +68,20 @@ public class Controller2 implements Initializable {
     
     public void setStage(Stage stage){
         this.stage=stage;
-    }    
-     
-     
-    private void DividirCirculo(){
-        
+    }
+
+    @FXML
+    private void btnEmpezar(ActionEvent event) {
+        String dir =(String)direccion.getValue();
+        boolean dirBool=dir.equals("Derecha");
+        Simulador simular = new Simulador();
+        int pos;
+        if(simular.verificarEntradaInit(txtPos.getText())){
+            pos = Integer.parseInt(txtPos.getText());
+            Funciones.simular(pos,dirBool);
+        }else{
+            lblError.setText("Número fuera de rango");
+        }
     }
     
     

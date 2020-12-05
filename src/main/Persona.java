@@ -20,7 +20,7 @@ public class Persona {
     
     
     public Persona(int id,double x, double y){
-        this.imagen.setImage(new Image("sold.png"));
+        this.imagen.setImage(new Image("resources/soldad_serio2.png"));
         this.id=id;
         this.vivo=true;
         this.imagen.setX(x);
