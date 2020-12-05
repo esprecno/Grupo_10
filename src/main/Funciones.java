@@ -37,6 +37,7 @@ public class Funciones {
         
             Persona pAsesino = it.next();
             Persona pVictima = it.next();
+            
             while(!pVictima.equals(pAsesino)){
                 if(pVictima.getVivo()){
                     pVictima.setVivo(false);
@@ -47,13 +48,13 @@ public class Funciones {
                     cambiarImagen(pVictima,"resources/calabera.png");
                     
                     sonido.start();
-                     try{
+                    try{
                         Thread.sleep(2000);
                     }catch (InterruptedException ex) {
                         Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     sonido.close();
-                    pAsesino.setImagen(new Image("resources/soldad_sero2.png"));
+                    pAsesino.setImagen(new Image("resources/soldad_serio2.png"));
                     pAsesino = buscarAsesinoDer(it);
                     pVictima = buscarVictimaDer(it);
                 }
@@ -61,6 +62,7 @@ public class Funciones {
                     pVictima = it.next();
                 }
             }
+            
             
     }
     
