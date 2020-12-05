@@ -1,0 +1,6 @@
+projectKey=Grupo_10
+serverUrl=http://localhost:9000
+serverVersion=8.5.1.38104
+dashboardUrl=http://localhost:9000/dashboard?id=Grupo_10
+ceTaskId=AXYxK-D0-rEKRpazV6_r
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXYxK-D0-rEKRpazV6_r
